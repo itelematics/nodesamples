@@ -1,7 +1,9 @@
 FROM node:latest
-WORKDIR  /usr/src/app
+RUN mkdir -p /app/src
+WORKDIR  /app/src
 COPY package.json .
+COPY package-lock.json .
 RUN npm install
 COPY . .
-EXPOSE 80
-CMD ["npm", "start"]
+EXPOSE 8082
+CMD ["node", "app.js"]
